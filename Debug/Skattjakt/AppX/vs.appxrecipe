@@ -1,0 +1,149 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Machine>ANTEC</Machine>
+    <WindowsUser>Thomas</WindowsUser>
+    <TargetPlatformIdentifier>UAP</TargetPlatformIdentifier>
+    <TargetOsVersion>10.0</TargetOsVersion>
+    <TargetOsDescription>Windows 10.0</TargetOsDescription>
+    <SolutionConfiguration>Debug|Win32</SolutionConfiguration>
+    <PackageArchitecture>x86</PackageArchitecture>
+    <PackageIdentityName>a82f47ee-99e0-4c31-b1e0-bde3ac6a9725</PackageIdentityName>
+    <PackageIdentityPublisher>CN=tholun</PackageIdentityPublisher>
+    <IntermediateOutputPath>C:\ant64_shared\hv\opb200_objektorienterad_c++\src-visualstudio\Skattjakt\Debug\</IntermediateOutputPath>
+    <RemoteDeploymentType>CopyToDevice</RemoteDeploymentType>
+    <PackageRegistrationPath>
+    </PackageRegistrationPath>
+    <RemoveNonLayoutFiles>false</RemoveNonLayoutFiles>
+    <DeployOptionalPackages>false</DeployOptionalPackages>
+    <WindowsSdkPath>C:\Program Files %28x86%29\Windows Kits\10\</WindowsSdkPath>
+    <LayoutDir>C:\ant64_shared\hv\opb200_objektorienterad_c++\src-visualstudio\Skattjakt\Debug\Skattjakt\AppX</LayoutDir>
+    <RegisteredManifestChecksum>AA008F280EFB34B0E67B64BDCBB9CCA74AA093A0559CA6231A2A9B31854184E5</RegisteredManifestChecksum>
+    <RegisteredPackageMoniker>a82f47ee-99e0-4c31-b1e0-bde3ac6a9725_1.0.0.0_x86__5js2ceqtrakr8</RegisteredPackageMoniker>
+    <RegisteredUserModeAppID>a82f47ee-99e0-4c31-b1e0-bde3ac6a9725_5js2ceqtrakr8!App</RegisteredUserModeAppID>
+    <RegisteredPackageID>a82f47ee-99e0-4c31-b1e0-bde3ac6a9725</RegisteredPackageID>
+    <RegisteredPackagePublisher>CN=tholun</RegisteredPackagePublisher>
+    <RegisteredVersion>1.0.0.0</RegisteredVersion>
+  </PropertyGroup>
+  <ItemGroup>
+    <AppXManifest Include="C:\ant64_shared\hv\opb200_objektorienterad_c++\src-visualstudio\Skattjakt\Debug\Skattjakt\AppxManifest.xml">
+      <PackagePath>AppxManifest.xml</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+      <Modified>2020-06-02T11:37:07.960</Modified>
+    </AppXManifest>
+  </ItemGroup>
+  <ItemGroup>
+    <AppxPackagedFile Include="C:\ant64_shared\hv\opb200_objektorienterad_c++\src-visualstudio\Skattjakt\Debug\Skattjakt\Skattjakt.exe">
+      <PackagePath>Skattjakt.exe</PackagePath>
+      <Modified>2020-06-02T11:52:05.624</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\ant64_shared\hv\opb200_objektorienterad_c++\src-visualstudio\Skattjakt\packages\Win2D.uwp.1.23.0\build\native\..\..\runtimes\win10-x86\native\Microsoft.Graphics.Canvas.dll">
+      <PackagePath>Microsoft.Graphics.Canvas.dll</PackagePath>
+      <Modified>2019-05-27T17:34:30.000</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\ant64_shared\hv\opb200_objektorienterad_c++\src-visualstudio\Skattjakt\packages\Win2D.uwp.1.23.0\build\native\..\..\lib\uap10.0\Microsoft.Graphics.Canvas.winmd">
+      <PackagePath>Microsoft.Graphics.Canvas.winmd</PackagePath>
+      <Modified>2019-05-27T17:34:30.000</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\ant64_shared\hv\opb200_objektorienterad_c++\src-visualstudio\Skattjakt\Debug\Skattjakt\Skattjakt.winmd">
+      <PackagePath>Skattjakt.winmd</PackagePath>
+      <Modified>2020-06-02T11:37:00.397</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\ant64_shared\hv\opb200_objektorienterad_c++\src-visualstudio\Skattjakt\Assets\LockScreenLogo.scale-200.png">
+      <PackagePath>Assets\LockScreenLogo.scale-200.png</PackagePath>
+      <Modified>2019-05-27T17:34:29.000</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\ant64_shared\hv\opb200_objektorienterad_c++\src-visualstudio\Skattjakt\Assets\Nevanda_32-alpha.png">
+      <PackagePath>Assets\Nevanda_32-alpha.png</PackagePath>
+      <Modified>2019-05-29T07:25:27.000</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\ant64_shared\hv\opb200_objektorienterad_c++\src-visualstudio\Skattjakt\Assets\Nevanda_32.png">
+      <PackagePath>Assets\Nevanda_32.png</PackagePath>
+      <Modified>2019-05-27T17:34:29.000</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\ant64_shared\hv\opb200_objektorienterad_c++\src-visualstudio\Skattjakt\Assets\SplashScreen.scale-200.png">
+      <PackagePath>Assets\SplashScreen.scale-200.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+      <Modified>2019-05-27T17:34:29.000</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\ant64_shared\hv\opb200_objektorienterad_c++\src-visualstudio\Skattjakt\Assets\Square150x150Logo.scale-200.png">
+      <PackagePath>Assets\Square150x150Logo.scale-200.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+      <Modified>2019-05-27T17:34:29.000</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\ant64_shared\hv\opb200_objektorienterad_c++\src-visualstudio\Skattjakt\Assets\Square44x44Logo.scale-200.png">
+      <PackagePath>Assets\Square44x44Logo.scale-200.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+      <Modified>2019-05-27T17:34:29.000</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\ant64_shared\hv\opb200_objektorienterad_c++\src-visualstudio\Skattjakt\Assets\Square44x44Logo.targetsize-24_altform-unplated.png">
+      <PackagePath>Assets\Square44x44Logo.targetsize-24_altform-unplated.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+      <Modified>2019-05-27T17:34:29.000</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\ant64_shared\hv\opb200_objektorienterad_c++\src-visualstudio\Skattjakt\Assets\StoreLogo.png">
+      <PackagePath>Assets\StoreLogo.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+      <Modified>2019-05-27T17:34:29.000</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\ant64_shared\hv\opb200_objektorienterad_c++\src-visualstudio\Skattjakt\Assets\Wide310x150Logo.scale-200.png">
+      <PackagePath>Assets\Wide310x150Logo.scale-200.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+      <Modified>2019-05-27T17:34:29.000</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\ant64_shared\hv\opb200_objektorienterad_c++\src-visualstudio\Skattjakt\Debug\Skattjakt\App.xbf">
+      <PackagePath>App.xbf</PackagePath>
+      <Modified>2020-06-02T11:52:01.133</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\ant64_shared\hv\opb200_objektorienterad_c++\src-visualstudio\Skattjakt\Debug\Skattjakt\MainPage.xbf">
+      <PackagePath>MainPage.xbf</PackagePath>
+      <Modified>2020-06-02T11:52:01.133</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft SDKs\Windows Kits\10\ExtensionSDKs\Microsoft.UniversalCRT.Debug\10.0.17763.0\\redist\Debug\x86\ucrtbased.dll">
+      <PackagePath>ucrtbased.dll</PackagePath>
+      <Modified>2018-10-22T23:41:14.000</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\ant64_shared\hv\opb200_objektorienterad_c++\src-visualstudio\Skattjakt\Debug\Skattjakt\resources.pri">
+      <PackagePath>resources.pri</PackagePath>
+      <Modified>2020-06-02T11:37:06.667</Modified>
+    </AppxPackagedFile>
+  </ItemGroup>
+  <ItemGroup>
+    <ResolvedSDKReference Include="C:\Program Files %28x86%29\Microsoft SDKs\Windows Kits\10\ExtensionSDKs\Microsoft.VCLibs\14.0\">
+      <Name>Microsoft.VCLibs.140.00.Debug</Name>
+      <Version>14.0.27810.0</Version>
+      <Architecture>ARM</Architecture>
+      <FrameworkIdentity>Name = Microsoft.VCLibs.140.00.Debug, MinVersion = 14.0.27810.0, Publisher = %27CN=Microsoft Corporation, O=Microsoft Corporation, L=Redmond, S=Washington, C=US%27</FrameworkIdentity>
+      <AppxLocation>C:\Program Files %28x86%29\Microsoft SDKs\Windows Kits\10\ExtensionSDKs\Microsoft.VCLibs\14.0\.\AppX\Debug\ARM\Microsoft.VCLibs.ARM.Debug.14.00.appx</AppxLocation>
+      <MoreInfo>
+      </MoreInfo>
+    </ResolvedSDKReference>
+    <ResolvedSDKReference Include="C:\Program Files %28x86%29\Microsoft SDKs\Windows Kits\10\ExtensionSDKs\Microsoft.VCLibs\14.0\">
+      <Name>Microsoft.VCLibs.140.00.Debug</Name>
+      <Version>14.0.27810.0</Version>
+      <Architecture>ARM64</Architecture>
+      <FrameworkIdentity>Name = Microsoft.VCLibs.140.00.Debug, MinVersion = 14.0.27810.0, Publisher = %27CN=Microsoft Corporation, O=Microsoft Corporation, L=Redmond, S=Washington, C=US%27</FrameworkIdentity>
+      <AppxLocation>C:\Program Files %28x86%29\Microsoft SDKs\Windows Kits\10\ExtensionSDKs\Microsoft.VCLibs\14.0\.\AppX\Debug\ARM64\Microsoft.VCLibs.ARM64.Debug.14.00.appx</AppxLocation>
+      <MoreInfo>
+      </MoreInfo>
+    </ResolvedSDKReference>
+    <ResolvedSDKReference Include="C:\Program Files %28x86%29\Microsoft SDKs\Windows Kits\10\ExtensionSDKs\Microsoft.VCLibs\14.0\">
+      <Name>Microsoft.VCLibs.140.00.Debug</Name>
+      <Version>14.0.27810.0</Version>
+      <Architecture>x64</Architecture>
+      <FrameworkIdentity>Name = Microsoft.VCLibs.140.00.Debug, MinVersion = 14.0.27810.0, Publisher = %27CN=Microsoft Corporation, O=Microsoft Corporation, L=Redmond, S=Washington, C=US%27</FrameworkIdentity>
+      <AppxLocation>C:\Program Files %28x86%29\Microsoft SDKs\Windows Kits\10\ExtensionSDKs\Microsoft.VCLibs\14.0\.\AppX\Debug\x64\Microsoft.VCLibs.x64.Debug.14.00.appx</AppxLocation>
+      <MoreInfo>
+      </MoreInfo>
+    </ResolvedSDKReference>
+    <ResolvedSDKReference Include="C:\Program Files %28x86%29\Microsoft SDKs\Windows Kits\10\ExtensionSDKs\Microsoft.VCLibs\14.0\">
+      <Name>Microsoft.VCLibs.140.00.Debug</Name>
+      <Version>14.0.27810.0</Version>
+      <Architecture>x86</Architecture>
+      <FrameworkIdentity>Name = Microsoft.VCLibs.140.00.Debug, MinVersion = 14.0.27810.0, Publisher = %27CN=Microsoft Corporation, O=Microsoft Corporation, L=Redmond, S=Washington, C=US%27</FrameworkIdentity>
+      <AppxLocation>C:\Program Files %28x86%29\Microsoft SDKs\Windows Kits\10\ExtensionSDKs\Microsoft.VCLibs\14.0\.\AppX\Debug\x86\Microsoft.VCLibs.x86.Debug.14.00.appx</AppxLocation>
+      <MoreInfo>
+      </MoreInfo>
+    </ResolvedSDKReference>
+  </ItemGroup>
+</Project>

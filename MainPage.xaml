@@ -1,0 +1,39 @@
+﻿<Page
+    x:Class="Skattjakt.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Skattjakt"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:canvas="using:Microsoft.Graphics.Canvas.UI.Xaml"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <RelativePanel x:Name="mainpanel">
+        <TextBlock x:Name="rubrik" Margin="20,10,20,10" VerticalAlignment="Top" RelativePanel.AlignTopWithPanel="True"
+                   RelativePanel.AlignHorizontalCenterWithPanel="True" Text="Skattjakt C++ 2021 v1.2" FontSize="36" FontWeight="Bold"  />
+        <Border BorderThickness="3,3,3,3" BorderBrush="#FF333333"
+                              RelativePanel.Below="rubrik" RelativePanel.AlignLeftWithPanel="True"
+                              RelativePanel.AlignBottomWithPanel="True" RelativePanel.AlignLeftWith=""
+                              RelativePanel.AlignRightWith="" RelativePanel.LeftOf="infobuttonpanel" Margin="20,10,10,20">
+            <canvas:CanvasControl x:Name="canvas" CreateResources="CanvasControl_CreateResources" 
+                                  Draw="CanvasControl_Draw" ClearColor="#FF1E1E1E"/>
+        </Border>
+        <RelativePanel x:Name="infobuttonpanel" RelativePanel.Below="rubrik" RelativePanel.AlignBottomWithPanel="True"
+                    Width="300" RelativePanel.AlignRightWithPanel="True"
+                    Margin="10,10,20,20" Padding="20,10,10,10"
+                    Background="#FF1E1E1E" BorderThickness="3,3,3,3" BorderBrush="#FF333333">
+            <TextBlock x:Name="infoblock" Text="Info" FontSize="20" Margin="0,10,10,10" RelativePanel.AlignTopWithPanel="True" />
+            <RelativePanel x:Name="player1info" RelativePanel.Below="infoblock" RelativePanel.AlignLeftWithPanel="True" RelativePanel.AlignRightWithPanel="True">
+                <TextBlock x:Name="player1block" Text="Info" FontSize="18" Margin="0,10,10,10" RelativePanel.AlignLeftWithPanel="True" />
+                <canvas:CanvasControl x:Name="p1image" Draw="P1image_Draw" Width="64" Height="64" Margin="0,70,0,0" RelativePanel.AlignRightWithPanel="True"/>
+            </RelativePanel>
+            <RelativePanel x:Name="palyer2info" RelativePanel.Below="player1info" RelativePanel.AlignLeftWithPanel="True" RelativePanel.AlignRightWithPanel="True">
+                <TextBlock x:Name="player2block" Text="Info" FontSize="18" Margin="0,10,10,20" />
+                <canvas:CanvasControl x:Name="p2image" Draw="P2image_Draw" Width="64" Height="64" Margin="0,70,0,0" RelativePanel.AlignRightWithPanel="True"/>
+            </RelativePanel>
+            <Button x:Name="nextbutton" Click="Nextbutton_Click" Content="Nästa runda" RelativePanel.Above="next10button" />
+            <Button x:Name="next10button" Click="Next10button_Click" Content="Kör 10 rundor" Margin="0,20,0,10" RelativePanel.AlignBottomWithPanel="True" />
+        </RelativePanel>
+    </RelativePanel>
+</Page>
