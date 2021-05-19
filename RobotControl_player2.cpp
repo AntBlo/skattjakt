@@ -1,5 +1,7 @@
 #include "pch.h"
 #include "RobotControl_player2.h"
+#include "AbstractStrategy.h"
+#include "StrategyExplore.h"
 
 using namespace Player2;
 
@@ -12,8 +14,21 @@ Player2::RobotControl::RobotControl()
 
 Command Player2::RobotControl::do_command(const Info &info)
 {
-	int d = rand() % 8;
-	Dir dir = static_cast<Dir>(d);
-	// dir = Dir::NE;
-	return Command{Action::STEP,dir};
+	auto cmd = Command{ Action::PASS, Dir::N };
+	std::unique_ptr<StrategyData> strategyData = std::make_unique<StrategyData>(info, cmd);
+
+	AbstractStrategy* strategies[] =
+	{
+		new StrategyExplore(),
+		// new StrategyTakeTreasure(),
+		// new StrategyPutTrap(),
+		// new StrategyAvoidTrap(),
+	};
+
+	for each (AbstractStrategy* strategy in strategies)
+	{
+		strategy->apply(strategyData);
+	}
+
+	return strategyData->strategy_command;
 }

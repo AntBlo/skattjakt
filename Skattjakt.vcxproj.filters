@@ -21,6 +21,8 @@
     <ClCompile Include="RobotState.cpp" />
     <ClCompile Include="RobotControl_player1.cpp" />
     <ClCompile Include="RobotControl_player2.cpp" />
+    <ClCompile Include="AbstractStrategy.cpp" />
+    <ClCompile Include="StrategyExplore.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h" />
@@ -34,6 +36,8 @@
     <ClInclude Include="RobotControl_player2.h" />
     <ClInclude Include="RobotInterface.h" />
     <ClInclude Include="map_20x20x5.h" />
+    <ClInclude Include="AbstractStrategy.h" />
+    <ClInclude Include="StrategyExplore.h" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="Assets\LockScreenLogo.scale-200.png">
