@@ -13,10 +13,18 @@ Player2::RobotControl::RobotControl()
 }
 
 
+class StrategyTakeTreasure: public AbstractStrategy
+{
+public:
+	void apply(std::unique_ptr<StrategyData>& strategyData) {
+		// TODO
+	}
+};
+
 AbstractStrategy* strategies[] =
 {
 	new StrategyExplore(),
-	// new StrategyTakeTreasure(),
+	new StrategyTakeTreasure(),
 	// new StrategyPutTrap(),
 	// new StrategyAvoidTrap(),
 };
