@@ -12,18 +12,20 @@ Player2::RobotControl::RobotControl()
 	team_name = L"Team bäst";
 }
 
+
+AbstractStrategy* strategies[] =
+{
+	new StrategyExplore(),
+	// new StrategyTakeTreasure(),
+	// new StrategyPutTrap(),
+	// new StrategyAvoidTrap(),
+};
+
 Command Player2::RobotControl::do_command(const Info &info)
 {
 	auto cmd = Command{ Action::PASS, Dir::N };
 	std::unique_ptr<StrategyData> strategyData = std::make_unique<StrategyData>(info, cmd);
 
-	AbstractStrategy* strategies[] =
-	{
-		new StrategyExplore(),
-		// new StrategyTakeTreasure(),
-		// new StrategyPutTrap(),
-		// new StrategyAvoidTrap(),
-	};
 
 	for each (AbstractStrategy* strategy in strategies)
 	{
