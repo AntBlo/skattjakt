@@ -76,15 +76,12 @@ namespace Team_Lejla_Leon_Anton {
 			{
 				for each (int y in ys)
 				{
-					auto not_center = !(x == 0 && y == 0);
-					if (not_center) {
-						auto cell_content = strategyData->info.neighbor_cells[1-y][x+1];
-						Position update_position = make_pair(strategyData->relative_x_y_to_start_position->first + x, strategyData->relative_x_y_to_start_position->second + y);
-						auto stored_cell_content = strategyData->world_map->find(update_position);
-						if (stored_cell_content == strategyData->world_map->end()) {
-							strategyData->world_map->insert({ update_position, cell_content });
-							strategyData->world_map->insert({ update_position, cell_content });
-						}
+					auto cell_content = strategyData->info.neighbor_cells[1-y][x+1];
+					if (cell_content == Cell_content::ROBOT)cell_content = Cell_content::EMPTY;
+					Position update_position = make_pair(strategyData->relative_x_y_to_start_position->first + x, strategyData->relative_x_y_to_start_position->second + y);
+					auto stored_cell_content = strategyData->world_map->find(update_position);
+					if (stored_cell_content == strategyData->world_map->end()) {
+						strategyData->world_map->insert({ update_position, cell_content });
 					}
 				}
 			}
