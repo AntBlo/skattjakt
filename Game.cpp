@@ -1,7 +1,7 @@
 #include "pch.h"
 #include "Game.h"
 #include "RobotControl_player1.h"
-#include "RobotControl_player2.h"
+#include "RobotControl_Lejla_Leon_Anton.h"
 
 // Namespaces for player codes
 #define PLAYER1 Player1
@@ -12,7 +12,7 @@ Game::Game() :
 	robot2(2, theWorld.p2_startx, theWorld.p2_starty)
 {
 	pRobotcontrol1 = new PLAYER1::RobotControl();
-	pRobotcontrol2 = new PLAYER2::RobotControl();
+	pRobotcontrol2 = new Team_Lejla_Leon_Anton::RobotControl();
 }
 
 Game::~Game()

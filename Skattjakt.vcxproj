@@ -169,7 +169,6 @@
     </ClCompile>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="AbstractStrategy.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="game_common.h" />
     <ClInclude Include="map_20x20x5.h" />
@@ -181,10 +180,10 @@
       <DependentUpon>MainPage.xaml</DependentUpon>
     </ClInclude>
     <ClInclude Include="RobotControl_player1.h" />
-    <ClInclude Include="RobotControl_player2.h" />
+    <ClInclude Include="RobotControl_Lejla_Leon_Anton.h" />
     <ClInclude Include="RobotInterface.h" />
     <ClInclude Include="RobotState.h" />
-    <ClInclude Include="StrategyExplore.h" />
+    <ClInclude Include="Strategies.h" />
     <ClInclude Include="World.h" />
   </ItemGroup>
   <ItemGroup>
@@ -214,7 +213,6 @@
     <Image Include="Assets\Wide310x150Logo.scale-200.png" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="AbstractStrategy.cpp" />
     <ClCompile Include="App.xaml.cpp">
       <DependentUpon>App.xaml</DependentUpon>
     </ClCompile>
@@ -233,9 +231,9 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="RobotControl_player1.cpp" />
-    <ClCompile Include="RobotControl_player2.cpp" />
+    <ClCompile Include="RobotControl_Lejla_Leon_Anton.cpp" />
     <ClCompile Include="RobotState.cpp" />
-    <ClCompile Include="StrategyExplore.cpp" />
+    <ClCompile Include="Strategies.cpp" />
     <ClCompile Include="World.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

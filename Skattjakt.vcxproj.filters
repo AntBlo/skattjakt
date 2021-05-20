@@ -20,9 +20,8 @@
     <ClCompile Include="World.cpp" />
     <ClCompile Include="RobotState.cpp" />
     <ClCompile Include="RobotControl_player1.cpp" />
-    <ClCompile Include="RobotControl_player2.cpp" />
-    <ClCompile Include="AbstractStrategy.cpp" />
-    <ClCompile Include="StrategyExplore.cpp" />
+    <ClCompile Include="RobotControl_Lejla_Leon_Anton.cpp" />
+    <ClCompile Include="Strategies.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h" />
@@ -33,11 +32,10 @@
     <ClInclude Include="World.h" />
     <ClInclude Include="RobotState.h" />
     <ClInclude Include="RobotControl_player1.h" />
-    <ClInclude Include="RobotControl_player2.h" />
+    <ClInclude Include="RobotControl_Lejla_Leon_Anton.h" />
     <ClInclude Include="RobotInterface.h" />
     <ClInclude Include="map_20x20x5.h" />
-    <ClInclude Include="AbstractStrategy.h" />
-    <ClInclude Include="StrategyExplore.h" />
+    <ClInclude Include="Strategies.h" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="Assets\LockScreenLogo.scale-200.png">

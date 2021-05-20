@@ -1,7 +1,7 @@
 #pragma once
 #include "RobotInterface.h"
 
-namespace Player2 {
+namespace Team_Lejla_Leon_Anton {
 
 	class RobotControl :
 		public RobotInterface
