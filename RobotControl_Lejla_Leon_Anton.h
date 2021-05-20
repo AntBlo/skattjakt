@@ -1,5 +1,8 @@
 #pragma once
 #include "RobotInterface.h"
+#include "Strategies.h"
+
+using namespace std;
 
 namespace Team_Lejla_Leon_Anton {
 
@@ -8,9 +11,11 @@ namespace Team_Lejla_Leon_Anton {
 	{
 	public:
 		RobotControl();
+		map<pair<int, int>, Cell_content> world_map;
+		pair<int, int> relative_x_y_to_start_position;
+		vector<AbstractStrategy*> strategies;
 
 		Command do_command(const Info &info) override;
 	};
-
 }
 
