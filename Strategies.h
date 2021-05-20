@@ -63,6 +63,36 @@ namespace Team_Lejla_Leon_Anton {
 				y = -1;
 			}
 		}
+
+		Dir x_y_to_dir(int x, int y)
+		{
+			Dir dir;
+			if (x == 0 && y == 1) {
+				dir = Dir::N;
+			}
+			else if (x == 1 && y == 0) {
+				dir = Dir::E;
+			}
+			else if (x == -1 && y == 0) {
+				dir = Dir::W;
+			}
+			else if (x == 0 && y == -1) {
+				dir = Dir::S;
+			}
+			else if (x == 1 && y == 1) {
+				dir = Dir::NE;
+			}
+			else if (x == -1 && y == 1) {
+				dir = Dir::NW;
+			}
+			else if (x == 1 && y == -1) {
+				dir = Dir::SE;
+			}
+			else {//if (x == -1 && y == -1) {
+				dir = Dir::SW;
+			}
+			return dir;
+		}
 	};
 
 
@@ -92,8 +122,53 @@ namespace Team_Lejla_Leon_Anton {
 	{
 	public:
 		void apply(unique_ptr<StrategyData>& strategyData) {
-			strategyData->strategy_command.action = Action::STEP;
-			strategyData->strategy_command.step_dir = Dir::N;
+			int best_exploration_dir_score = 0;
+			Dir best_exploration_dir = Dir::N;
+			int xs[] = { -1, 0, 1 };
+			int ys[] = { -1, 0, 1 };
+			for each (int x in xs)
+			{
+				for each (int y in ys)
+				{
+					Position position_ahead = make_pair(strategyData->relative_x_y_to_start_position->first + x, strategyData->relative_x_y_to_start_position->second + y);
+					if(strategyData->world_map->find(position_ahead)->second == Cell_content::EMPTY){
+						int num_unexplored_cells = count_unexplored_cells_at(strategyData, position_ahead);
+						if (best_exploration_dir_score < num_unexplored_cells) {
+							best_exploration_dir = x_y_to_dir(x, y);
+							best_exploration_dir_score = num_unexplored_cells;
+						}
+					}
+
+				}
+			}
+
+			if (best_exploration_dir_score == 0) {
+				strategyData->strategy_command.action = Action::PASS;
+				strategyData->strategy_command.step_dir = Dir::N;
+
+			}
+			else {
+				strategyData->strategy_command.action = Action::STEP;
+				strategyData->strategy_command.step_dir = best_exploration_dir;
+			}
+		}
+
+		int count_unexplored_cells_at(unique_ptr<StrategyData> &strategyData, Position position_ahead) {
+			int count = 0;
+			int xs[] = { -1, 0, 1 };
+			int ys[] = { -1, 0, 1 };
+			for each (int x in xs)
+			{
+				for each (int y in ys)
+				{
+					Position position_around = make_pair(position_ahead.first + x, position_ahead.second + y);
+					auto stored_cell_content = strategyData->world_map->find(position_around);
+					if (stored_cell_content == strategyData->world_map->end()) {
+						count++;
+					}
+				}
+			}
+			return count;
 		}
 	};
 
@@ -102,7 +177,7 @@ namespace Team_Lejla_Leon_Anton {
 		int num_traps = 5;
 	public:
 		void apply(unique_ptr<StrategyData>& strategyData) {
-			if(num_traps > 0){
+			if(num_traps > 0 && false){
 				auto x = 0;
 				auto y = 0;
 				Dir dir = Dir::W;
