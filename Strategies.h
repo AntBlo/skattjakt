@@ -5,6 +5,7 @@
 #include <set>
 #include <map>
 #include <memory>
+#include <stdlib.h>
 
 using namespace std;
 
@@ -18,12 +19,14 @@ namespace Team_Lejla_Leon_Anton {
 		Command strategy_command;
 		map<Position, Cell_content>* world_map;
 		Position* relative_x_y_to_start_position;
-		StrategyData(Info info, Command strategy_command, map<Position, Cell_content> *world_map, Position* relative_x_y_to_start_position)
+		Command last_command;
+		StrategyData(Info info, Command strategy_command, map<Position, Cell_content> *world_map, Position* relative_x_y_to_start_position, Command last_command)
 		{
 			this->info = info;
 			this->strategy_command = strategy_command;
 			this->world_map = world_map;
 			this->relative_x_y_to_start_position = relative_x_y_to_start_position;
+			this->last_command = last_command;
 		}
 	};
 
@@ -99,6 +102,22 @@ namespace Team_Lejla_Leon_Anton {
 		}
 	};
 
+	class StrategyUpdateRobotPosition : public AbstractStrategy
+	{
+	public:
+		void apply(unique_ptr<StrategyData>& strategyData) {
+			if (strategyData->last_command.action == Action::STEP
+				&& strategyData->info.last_event != Event::COLLISION
+				&& strategyData->info.last_event != Event::TRAPPED)
+			{
+				auto x = 0;
+				auto y = 0;
+				dir_to_x_y(strategyData->last_command.step_dir, x, y);
+				strategyData->relative_x_y_to_start_position->first += x;
+				strategyData->relative_x_y_to_start_position->second += y;
+			}
+		}
+	};
 
 	class StrategyUpdateWorldMap : public AbstractStrategy
 	{
@@ -245,25 +264,68 @@ namespace Team_Lejla_Leon_Anton {
 		}
 	};
 
-	class StrategyLayTrap : public AbstractStrategy
+	class StrategyLayTrapByOpponent : public AbstractStrategy
 	{
-		int num_traps = 5;
 	public:
-		void apply(unique_ptr<StrategyData>& strategyData) {
-			if(num_traps > 0 && false){
-				auto x = 0;
-				auto y = 0;
-				Dir dir = Dir::W;
-				dir_to_x_y(dir, x, y);
-				Position put_trap_at_position = make_pair(strategyData->relative_x_y_to_start_position->first + x, strategyData->relative_x_y_to_start_position->second + y);
+		int* num_traps_left;
 
-				auto stored_cell_content = strategyData->world_map->find(put_trap_at_position);
-				if (stored_cell_content->second == Cell_content::EMPTY){
-					strategyData->strategy_command.action = Action::PLACE_TRAP;
-					strategyData->strategy_command.step_dir = dir;
-					stored_cell_content->second = Cell_content::TRAP;
-					num_traps--;
+		StrategyLayTrapByOpponent(int* num_traps_left) {
+			this->num_traps_left = num_traps_left;
+		}
+
+		void apply(unique_ptr<StrategyData>& strategyData) {
+			if(*this->num_traps_left > 0){
+				bool found_other_robot = false;
+				int robot_x = 0;
+				int robot_y = 0;
+				int xs[] = { -1, 0, 1 };
+				int ys[] = { -1, 0, 1 };
+				for each (int x in xs)
+				{
+					for each (int y in ys)
+					{
+						if (x == 0 && y == 0)continue;
+						auto cell_content = strategyData->info.neighbor_cells[1 - y][x + 1];
+						if (cell_content == Cell_content::ROBOT) {
+							found_other_robot = true;
+							robot_x = x;
+							robot_y = y;
+						}
+					}
 				}
+				if (found_other_robot) {
+					auto cell_content = strategyData->info.neighbor_cells[robot_y][robot_x];
+					if(abs(robot_x) == abs(robot_y)){
+						bool trap_laid = try_lay_trap_at(strategyData, robot_x, 0);
+						if (!trap_laid)
+							try_lay_trap_at(strategyData, 0, robot_y);
+					}
+					else if (abs(robot_x) == 1) {
+						bool trap_laid = try_lay_trap_at(strategyData, robot_x, -1);
+						if (!trap_laid)
+							try_lay_trap_at(strategyData, robot_x, 1);
+					}
+					else if (abs(robot_y) == 1) {
+						bool trap_laid = try_lay_trap_at(strategyData, -1, robot_y);
+						if (!trap_laid)
+							try_lay_trap_at(strategyData, 1, robot_y);
+					}
+				}
+			}
+		}
+
+		bool try_lay_trap_at(std::unique_ptr<Team_Lejla_Leon_Anton::StrategyData>& strategyData, int x, int y)
+		{
+			Position put_trap_at_position = make_pair(strategyData->relative_x_y_to_start_position->first + x, strategyData->relative_x_y_to_start_position->second + y);
+			auto stored_cell_content = strategyData->world_map->find(put_trap_at_position);
+			if (stored_cell_content->second == Cell_content::EMPTY) {
+				strategyData->strategy_command.action = Action::PLACE_TRAP;
+				Dir dir = x_y_to_dir(x, y);
+				strategyData->strategy_command.step_dir = dir;
+				return true;
+			}
+			else {
+				return false;
 			}
 		}
 	};
@@ -288,14 +350,18 @@ namespace Team_Lejla_Leon_Anton {
 		}
 	};
 
-	class StrategyUpdateRobotPosition : public AbstractStrategy
+	class StrategyUpdateLaidTrapLocation : public AbstractStrategy
 	{
 	public:
+		int* num_traps_left;
+
+		StrategyUpdateLaidTrapLocation(int* num_traps_left) {
+			this->num_traps_left = num_traps_left;
+		}
 		void apply(unique_ptr<StrategyData>& strategyData) {
-			if (strategyData->strategy_command.action == Action::STEP
-				&& strategyData->info.last_event == Event::OK 
-				|| strategyData->info.last_event == Event::TREASURE_CAPTURED)
+			if (strategyData->strategy_command.action == Action::PLACE_TRAP)
 			{
+				Dir trap_laid_in_dir = strategyData->strategy_command.step_dir;
 				auto x = 0;
 				auto y = 0;
 				dir_to_x_y(strategyData->strategy_command.step_dir, x, y);
@@ -303,10 +369,8 @@ namespace Team_Lejla_Leon_Anton {
 				y = strategyData->relative_x_y_to_start_position->second + y;
 				Position position_ahead = make_pair(x, y);
 				auto stored_cell_content = strategyData->world_map->find(position_ahead);
-				if (stored_cell_content->second == Cell_content::EMPTY || stored_cell_content->second == Cell_content::TREASURE) {
-					strategyData->relative_x_y_to_start_position->first = x;
-					strategyData->relative_x_y_to_start_position->second = y;
-				}
+				stored_cell_content->second = Cell_content::TRAP;
+				(*this->num_traps_left)--;
 			}
 		}
 	};
