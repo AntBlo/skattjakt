@@ -18,6 +18,7 @@ namespace Team_Lejla_Leon_Anton{
 			new StrategyUpdateWorldMap(),
 			new StrategyExplore(),
 			new StrategyLayTrap(),
+			new StrategyTakeTreasure(),
 			new StrategyUpdateRobotPosition(),
 		};
 	}
