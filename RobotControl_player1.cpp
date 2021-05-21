@@ -11,15 +11,22 @@ Player1::RobotControl::RobotControl()
 	team_name = L"Team vinnarna";
 }
 
+int num_steps = 4;
+
 Command Player1::RobotControl::do_command(const Info &info)
 {
 	OutputDebugString(L"Nu körs do_command()\n");
 	if (info.last_event == Event::COLLISION)
 		OutputDebugString(L"Krockade i förra rundan!\n");
 
-	int d = rand() % 8;
-	Dir dir = static_cast<Dir>(d);
+	Dir dir = Dir::SE;
 	Action act = Action::STEP;
+	if (num_steps > 0) {
+		num_steps--;
+	}
+	else
+		if (rand() % 10 == 0)
+			dir = static_cast<Dir>(rand() % 8);
 	if (rand() % 20 == 0)
 		act = Action::PLACE_TRAP;
 	return Command{act,dir};
