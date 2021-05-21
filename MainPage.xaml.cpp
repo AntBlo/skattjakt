@@ -175,7 +175,7 @@ void Skattjakt::MainPage::Next10button_Click(Platform::Object^ sender, Windows::
 {
 	next10button->IsEnabled = false;
 	nextbutton->IsEnabled = false;
-	autorun = 20;
+	autorun = 200;
 }
 
 void MainPage::Update_info()
