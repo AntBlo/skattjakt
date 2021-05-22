@@ -273,6 +273,10 @@ namespace Team_Lejla_Leon_Anton {
 		}
 
 		void apply(unique_ptr<StrategyData>& strategyData) {
+			bool lay_trap_failed = strategyData->last_command.action == Action::PLACE_TRAP
+				&& strategyData->info.last_event == Event::COLLISION;
+			if (lay_trap_failed)return;
+
 			if(*this->num_traps_left > 0){
 				bool found_other_robot = false;
 				int robot_x = 0;
@@ -355,7 +359,7 @@ namespace Team_Lejla_Leon_Anton {
 		StrategyRetreat() {
 		}
 		void apply(unique_ptr<StrategyData>& strategyData) {
-			if (strategyData->last_command.action == Action::STEP)
+			if (strategyData->strategy_command.action == Action::STEP)
 			{
 				auto x = 0;
 				auto y = 0;
@@ -390,7 +394,8 @@ namespace Team_Lejla_Leon_Anton {
 			this->num_traps_left = num_traps_left;
 		}
 		void apply(unique_ptr<StrategyData>& strategyData) {
-			if (strategyData->strategy_command.action == Action::PLACE_TRAP)
+			if (strategyData->last_command.action == Action::PLACE_TRAP
+				&& strategyData->info.last_event != Event::COLLISION)
 			{
 				Dir trap_laid_in_dir = strategyData->strategy_command.step_dir;
 				auto x = 0;

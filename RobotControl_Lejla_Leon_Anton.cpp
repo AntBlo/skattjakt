@@ -17,12 +17,12 @@ namespace Team_Lejla_Leon_Anton{
 		strategies =
 		{
 			new StrategyUpdateRobotPosition(),
+			new StrategyUpdateLaidTrapLocation(&num_traps_left),
 			new StrategyUpdateWorldMap(),
 			new StrategyExplore(),
 			new StrategyLayTrapByOpponent(&num_traps_left),
-			new StrategyTakeTreasure(),
 			new StrategyRetreat(),
-			new StrategyUpdateLaidTrapLocation(&num_traps_left),
+			new StrategyTakeTreasure(),
 		};
 	}
 
