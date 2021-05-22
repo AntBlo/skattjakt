@@ -107,8 +107,7 @@ namespace Team_Lejla_Leon_Anton {
 	public:
 		void apply(unique_ptr<StrategyData>& strategyData) {
 			if (strategyData->last_command.action == Action::STEP
-				&& strategyData->info.last_event != Event::COLLISION
-				&& strategyData->info.last_event != Event::TRAPPED)
+				&& strategyData->info.last_event != Event::COLLISION)
 			{
 				auto x = 0;
 				auto y = 0;
@@ -344,6 +343,38 @@ namespace Team_Lejla_Leon_Anton {
 					if (cell_content == Cell_content::TREASURE) {
 						strategyData->strategy_command.action = Action::STEP;
 						strategyData->strategy_command.step_dir = x_y_to_dir(x, y);
+					}
+				}
+			}
+		}
+	};
+
+	class StrategyRetreat : public AbstractStrategy
+	{
+	public:
+		StrategyRetreat() {
+		}
+		void apply(unique_ptr<StrategyData>& strategyData) {
+			if (strategyData->last_command.action == Action::STEP)
+			{
+				auto x = 0;
+				auto y = 0;
+				dir_to_x_y(strategyData->strategy_command.step_dir, x, y);
+				auto cell_content = strategyData->info.neighbor_cells[1 - y][x + 1];
+				bool robotBlockedPath = cell_content == Cell_content::ROBOT;
+				if (robotBlockedPath) {
+					int xs[] = { -1, 0, 1 };
+					int ys[] = { -1, 0, 1 };
+					for each (int x in xs)
+					{
+						for each (int y in ys)
+						{
+							auto cell_content = strategyData->info.neighbor_cells[1 - y][x + 1];
+							if (cell_content == Cell_content::EMPTY) {
+								strategyData->strategy_command.action = Action::STEP;
+								strategyData->strategy_command.step_dir = x_y_to_dir(x, y);
+							}
+						}
 					}
 				}
 			}

@@ -1,3 +1,4 @@
+
 #include "pch.h"
 #include <debugapi.h>
 #include "RobotControl_player1.h"
@@ -11,23 +12,16 @@ Player1::RobotControl::RobotControl()
 	team_name = L"Team vinnarna";
 }
 
-int num_steps = 4;
-
-Command Player1::RobotControl::do_command(const Info &info)
+Command Player1::RobotControl::do_command(const Info& info)
 {
 	OutputDebugString(L"Nu körs do_command()\n");
 	if (info.last_event == Event::COLLISION)
 		OutputDebugString(L"Krockade i förra rundan!\n");
 
-	Dir dir = Dir::SE;
+	int d = rand() % 8;
+	Dir dir = static_cast<Dir>(d);
 	Action act = Action::STEP;
-	if (num_steps > 0) {
-		num_steps--;
-	}
-	else
-		if (rand() % 10 == 0)
-			dir = static_cast<Dir>(rand() % 8);
 	if (rand() % 20 == 0)
 		act = Action::PLACE_TRAP;
-	return Command{act,dir};
+	return Command{ act,dir };
 }

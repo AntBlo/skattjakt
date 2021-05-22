@@ -11,7 +11,8 @@ Game::Game() :
 	robot1(1, theWorld.p1_startx, theWorld.p1_starty),
 	robot2(2, theWorld.p2_startx, theWorld.p2_starty)
 {
-	pRobotcontrol1 = new PLAYER1::RobotControl();
+	pRobotcontrol1 = new Team_Lejla_Leon_Anton::RobotControl();
+	pRobotcontrol1->robot_bitmap_col += 1;
 	pRobotcontrol2 = new Team_Lejla_Leon_Anton::RobotControl();
 }
 

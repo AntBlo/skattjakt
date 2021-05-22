@@ -21,6 +21,7 @@ namespace Team_Lejla_Leon_Anton{
 			new StrategyExplore(),
 			new StrategyLayTrapByOpponent(&num_traps_left),
 			new StrategyTakeTreasure(),
+			new StrategyRetreat(),
 			new StrategyUpdateLaidTrapLocation(&num_traps_left),
 		};
 	}
